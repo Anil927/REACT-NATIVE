@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import {
   View,
@@ -10,19 +11,32 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
+import Addition from "./Home/Addition";
+import Subtraction from "./Home/Subtraction";
+import Multiplication from './Home/Multiplication';
+import Division from './Home/Division';
+
 
 const Stack = createNativeStackNavigator();
+
 
 export default function HomeScreen() {
   return (
     <NavigationContainer independent={true}>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Home" component={Home} />
+      <Stack.Navigator screenOptions={{ headerShown: false ,
+      animation:"slide_from_right"
+      }}>
+        <Stack.Screen name="Math" component={Home} 
+        />
         <Stack.Screen name="Addition" component={Addition} />
         <Stack.Screen name="Subtraction" component={Subtraction} />
+        <Stack.Screen name="Multiplication" component={Multiplication} />
+        <Stack.Screen name="Division" component={Division} />
+        {/* <Stack.Screen name="Addition" component={Addition} /> */}
+        {/* <Stack.Screen name="Subtraction" component={Subtraction} /> */}
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const Home = ({ navigation }) => {
@@ -35,17 +49,10 @@ const Home = ({ navigation }) => {
         start={{ x: 0.9, y: 0.1 }}
         end={{ x: 0.7, y: 0.7 }}>
         <View style={[styles.container,{marginBottom:23}]}>
-          {/* <TouchableHighlight
-            style={[styles.button, { backgroundColor: "#246EE9" }]}
-            onPress={() => navigation.navigate("Addition")}
-            activeOpacity={0.8}
-            underlayColor="#5b86e5">
-            <Text style={styles.btnText}>Addition</Text>
-          </TouchableHighlight> */}
 
           <TouchableHighlight
             onPress={() => navigation.navigate('Addition')}
-            activeOpacity={0.8}
+            activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
             <LinearGradient
@@ -59,7 +66,7 @@ const Home = ({ navigation }) => {
 
           <TouchableHighlight
             onPress={() => navigation.navigate('Subtraction')}
-            activeOpacity={0.8}
+            activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
             <LinearGradient
@@ -75,7 +82,7 @@ const Home = ({ navigation }) => {
 
           <TouchableHighlight
             onPress={() => navigation.navigate('Multiplication')}
-            activeOpacity={0.8}
+            activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
             <LinearGradient
@@ -91,7 +98,7 @@ const Home = ({ navigation }) => {
 
           <TouchableHighlight
             onPress={() => navigation.navigate('Division')}
-            activeOpacity={0.8}
+            activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
             <LinearGradient
@@ -107,7 +114,7 @@ const Home = ({ navigation }) => {
 
           <TouchableHighlight
             onPress={() => navigation.navigate('random')}
-            activeOpacity={0.8}
+            activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
             <LinearGradient
@@ -120,24 +127,11 @@ const Home = ({ navigation }) => {
           </TouchableHighlight>
 
 
-          <TouchableHighlight
-            onPress={() => navigation.navigate('Prime')}
-            activeOpacity={0.8}
-            underlayColor="#5b86e5"
-            style={styles.forTouch}>
-            <LinearGradient
-              colors={['#03A9F4', '#246EE9']}
-              start={{ x: 1.2, y: 0.4 }}
-              end={{ x: 0.2, y: 0.2 }}
-              style={styles.button}>
-              <Text style={styles.btnText}>Prime</Text>
-            </LinearGradient>
-          </TouchableHighlight>
 
 
           <TouchableHighlight
             onPress={() => navigation.navigate('Numbers')}
-            activeOpacity={0.8}
+            activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
             <LinearGradient
@@ -149,6 +143,19 @@ const Home = ({ navigation }) => {
             </LinearGradient>
           </TouchableHighlight>
 
+          <TouchableHighlight
+            onPress={() => navigation.navigate('Prime')}
+            activeOpacity={0.5}
+            underlayColor="#5b86e5"
+            style={styles.forTouch}>
+            <LinearGradient
+              colors={['#03A9F4', '#246EE9']}
+              start={{ x: 1.2, y: 0.4 }}
+              end={{ x: 0.2, y: 0.2 }}
+              style={styles.button}>
+              <Text style={styles.btnText}>Prime</Text>
+            </LinearGradient>
+          </TouchableHighlight>
 
         </View>
       </LinearGradient>
@@ -156,33 +163,7 @@ const Home = ({ navigation }) => {
   );
 };
 
-const Addition = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#5b86e5', '#36d1dc']}
-        style={styles.container}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}>
-        <Text>Addition</Text>
-      </LinearGradient>
-    </View>
-  );
-};
 
-const Subtraction = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#5b86e5', '#36d1dc']}
-        style={styles.container}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}>
-        <Text>Subtraction</Text>
-      </LinearGradient>
-    </View>
-  );
-};
 
 const styles = StyleSheet.create({
   container: {

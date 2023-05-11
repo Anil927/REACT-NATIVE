@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -24,7 +25,7 @@ export default function App() {
           marginLeft:-13
         },
       }}>
-        <Drawer.Screen name="Home"  component={HomeScreen} />
+        <Drawer.Screen name="Math"  component={HomeScreen} />
         <Drawer.Screen name="Score" component={Score} />
         <Drawer.Screen name="About"  component={About} />
       </Drawer.Navigator>
