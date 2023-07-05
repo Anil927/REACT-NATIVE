@@ -1,10 +1,8 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, Button} from 'react-native';
+import {View, Text, StyleSheet, TouchableHighlight, ToastAndroid } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Progress from 'react-native-progress';
-import { useDispatch, useSelector } from 'react-redux';
-import { showTime } from '../redux/action';
 
 
 let operand1, operand2;
@@ -56,32 +54,9 @@ const genQandA = () => {
 let QandA = genQandA();
 
 export default Addition = ({navigation}) => {
-  // const setData = async () => {
-  //   try {
-  //     let scores = await AsyncStorage.getItem('scores');
-
-  //     if (scores == null) {
-  //       scores = 0;
-  //     }
-  //     await AsyncStorage.setItem('scores', (Number(scores) + score).toString());
-  //   } catch (e) {
-  //     console.warn(e);
-  //   }
-  // };
-
-  // const getData = async () => {
-  //   try {
-  //     return await AsyncStorage.getItem('scores');
-  //   } catch (e) {
-  //     console.warn(e);
-  //   }
-  // };
-
   const [next, setNext] = useState(false);
 
-  const remainTime = useSelector((state)=> state.reducer);
-  //console.warn(remainTime);
-
+ 
   return (
     <View style={{flex: 1}}>
       {next ? <Main QandA={QandA} /> : null}
@@ -102,6 +77,9 @@ export default Addition = ({navigation}) => {
             if (questionNumber == 10) {
               questionNumber = 1;
 
+              if (Platform.OS === 'android') {
+                ToastAndroid.show("You have scored "+ score +" out of 10 ", ToastAndroid.SHORT)
+              } 
               navigation.goBack();
               // setData();
               time = 1.0;
@@ -227,7 +205,6 @@ const Options = props => {
     <View>
       <TouchableHighlight
         onPress={() => {
-          handleTime(timeRemain);
           options.optionA == answer
             ? (setOptionColorA(correct), (score += 1))
             : setOptionColorA(incorrect);

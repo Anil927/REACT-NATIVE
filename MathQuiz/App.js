@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import About from "../MathQuiz/components/About"
 import HomeScreen from "./components/HomeScreen"
-import Score from "../MathQuiz/components/Score"
+
 
 
 const Drawer = createDrawerNavigator();
@@ -26,7 +26,7 @@ export default function App() {
         },
       }}>
         <Drawer.Screen name="Math"  component={HomeScreen} />
-        <Drawer.Screen name="Score" component={Score} />
+
         <Drawer.Screen name="About"  component={About} />
       </Drawer.Navigator>
     </NavigationContainer>

@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, Button} from 'react-native';
+import {View, Text, StyleSheet, TouchableHighlight, ToastAndroid} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import * as Progress from 'react-native-progress';
 
@@ -96,6 +96,9 @@ export default Multiplication = ({navigation}) => {
             if (questionNumber == 10) {
               questionNumber = 1;
 
+              if (Platform.OS === 'android') {
+                ToastAndroid.show("You have scored "+ score +" out of 10 ", ToastAndroid.SHORT)
+              } 
               navigation.goBack();
               // setData();
               time = 1.0;

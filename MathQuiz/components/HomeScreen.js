@@ -15,6 +15,7 @@ import Addition from "./Home/Addition";
 import Subtraction from "./Home/Subtraction";
 import Multiplication from './Home/Multiplication';
 import Division from './Home/Division';
+import Random from './Home/Random';
 
 
 const Stack = createNativeStackNavigator();
@@ -32,6 +33,7 @@ export default function HomeScreen() {
         <Stack.Screen name="Subtraction" component={Subtraction} />
         <Stack.Screen name="Multiplication" component={Multiplication} />
         <Stack.Screen name="Division" component={Division} />
+        <Stack.Screen name="random" component={Random} />
         {/* <Stack.Screen name="Addition" component={Addition} /> */}
         {/* <Stack.Screen name="Subtraction" component={Subtraction} /> */}
       </Stack.Navigator>
@@ -130,7 +132,7 @@ const Home = ({ navigation }) => {
 
 
           <TouchableHighlight
-            onPress={() => navigation.navigate('Numbers')}
+            onPress={() => navigation.navigate('Division')}
             activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
@@ -144,7 +146,7 @@ const Home = ({ navigation }) => {
           </TouchableHighlight>
 
           <TouchableHighlight
-            onPress={() => navigation.navigate('Prime')}
+            onPress={() => navigation.navigate('Addition')}
             activeOpacity={0.5}
             underlayColor="#5b86e5"
             style={styles.forTouch}>
